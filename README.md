@@ -228,4 +228,27 @@ second_database=> SELECT * FROM second_table;
 +----+----------+
 (0 rows)
 
+second_database=> \d second_table;
+second_database=>                      Table "public.second_table"
++----------+-----------------------+-----------+----------+---------+
+|  Column  |         Type          | Collation | Nullable | Default |
++----------+-----------------------+-----------+----------+---------+
+| id       | integer               |           |          |         |
+| username | character varying(30) |           |          |         |
++----------+-----------------------+-----------+----------+---------+
+
+second_database=> ALTER TABLE second_table DROP COLUMN username;
+ALTER TABLE
+second_database=> ALTER TABLE second_table DROP COLUMN id;
+ALTER TABLE
+second_database=> \d
+               List of relations
++--------+--------------+-------+--------------+
+| Schema |     Name     | Type  |    Owner     |
++--------+--------------+-------+--------------+
+| public | first_table  | table | freecodecamp |
+| public | second_table | table | freecodecamp |
++--------+--------------+-------+--------------+
+(2 rows)
+
 second_database=> 
