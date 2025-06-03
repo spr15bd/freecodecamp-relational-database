@@ -251,4 +251,6 @@ second_database=> \d
 +--------+--------------+-------+--------------+
 (2 rows)
 
+second_database=> DROP TABLE second_table;
+DROP TABLE
 second_database=> 
