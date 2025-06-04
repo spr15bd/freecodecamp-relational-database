@@ -253,4 +253,57 @@ second_database=> \d
 
 second_database=> DROP TABLE second_table;
 DROP TABLE
-second_database=> 
+second_database=> DROP TABLE first_table;
+second_database=> DROP TABLE
+                  \l
+second_database=>                                     List of databases
++-----------------+--------------+----------+---------+---------+-----------------------+
+|      Name       |    Owner     | Encoding | Collate |  Ctype  |   Access privileges   |
++-----------------+--------------+----------+---------+---------+-----------------------+
+| postgres        | postgres     | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| first_database  | postgres     | UTF8     | C.UTF-8 | C.UTF.8 |                       |
+| second_database | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| template0       | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|                 |              |          |         |         | postgres=CTc/postgres |
+| template1       | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|                 |              |          |         |         | postgres=CTc/postgres |
++-----------------+--------------+----------+---------+---------+-----------------------+
+(5 rows)
+
+second_database=> ALTER DATABASE first_database RENAME TO mario_database;
+second_database=> ALTER DATABASE
+\l
+                                    List of databases
++-----------------+--------------+----------+---------+---------+-----------------------+
+|      Name       |    Owner     | Encoding | Collate |  Ctype  |   Access privileges   |
++-----------------+--------------+----------+---------+---------+-----------------------+
+| mario_database  | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| postgres        | postgres     | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| second_database | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| template0       | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|                 |              |          |         |         | postgres=CTc/postgres |
+| template1       | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|                 |              |          |         |         | postgres=CTc/postgres |
++-----------------+--------------+----------+---------+---------+-----------------------+
+(5 rows)
+
+second_database=> \c mario_database;
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "mario_database" as user "freecodecamp".
+mario_database=> DROP DATABASE second_database;
+DROP DATABASE
+mario_database=> \l
+mario_database=>                                    List of databases
++----------------+--------------+----------+---------+---------+-----------------------+
+|      Name      |    Owner     | Encoding | Collate |  Ctype  |   Access privileges   |
++----------------+--------------+----------+---------+---------+-----------------------+
+| mario_database | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| postgres       | postgres     | UTF8     | C.UTF-8 | C.UTF-8 |                       |
+| template0      | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|                |              |          |         |         | postgres=CTc/postgres |
+| template1      | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
+|                |              |          |         |         | postgres=CTc/postgres |
++----------------+--------------+----------+---------+---------+-----------------------+
+(4 rows)
+mario_database=> 
+
