@@ -305,5 +305,5 @@ mario_database=>                                    List of databases
 |                |              |          |         |         | postgres=CTc/postgres |
 +----------------+--------------+----------+---------+---------+-----------------------+
 (4 rows)
-mario_database=> 
+
 
