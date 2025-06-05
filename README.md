@@ -306,4 +306,65 @@ mario_database=>                                    List of databases
 +----------------+--------------+----------+---------+---------+-----------------------+
 (4 rows)
 
+mario_database=> CREATE TABLE characters();
+CREATE TABLE
+mario_database=> ALTER TABLE characters ADD COLUMN character_id SERIAL;
+mario_database=> ALTER TABLE
+\d mario_database;
+Did not find any relation named "mario_database".
+mario_database=> \d characters;
+                                     Table "public.characters"
++--------------+---------+-----------+----------+--------------------------------------------------+
+|    Column    |  Type   | Collation | Nullable |                     Default                      |
++--------------+---------+-----------+----------+--------------------------------------------------+
+| character_id | integer |           | not null | nextval('characters_character_id_seq'::regclass) |
++--------------+---------+-----------+----------+--------------------------------------------------+
+
+mario_database=> ALTER TABLE characters ADD COLUMN name VARCHAR(30);
+ALTER TABLE
+mario_database=> ALTER TABLE characters DROP COLUMN name;
+mario_database=> ALTER TABLE
+                 ALTER TABLE characters ADD COLUMN name VARCHAR(30) NOT NULL;
+mario_database=> ALTER TABLE
+                 ALTER TABLE characters ADD COLUMN homeland VARCHAR(60);
+mario_database=> ALTER TABLE
+                 ALTER TABLE characters ADD COLUMN favorite_color VARCHAR(30);
+mario_database=> ALTER TABLE
+                 \d characters;
+mario_database=>                                              Table "public.characters"
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+|     Column     |         Type          | Collation | Nullable |                     Default                      |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+| character_id   | integer               |           | not null | nextval('characters_character_id_seq'::regclass) |
+| name           | character varying(30) |           | not null |                                                  |
+| homeland       | character varying(60) |           |          |                                                  |
+| favorite_color | character varying(30) |           |          |                                                  |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+
+mario_database=> INSERT INTO characters(name, homeland, favorite_color) VALUES ('Mario', 'Mushroom Kingdom', 'Red');
+INSERT 0 1
+mario_database=> SELECT * FROM characters;
+mario_database=>                               
++--------------+-------+------------------+----------------+
+| character_id | name  |     homeland     | favorite_color |
++--------------+-------+------------------+----------------+
+|            1 | Mario | Mushroom Kingdom | Red            |
++--------------+-------+------------------+----------------+
+(1 row)
+
+INSERT INTO C
+mario_database=> INSERT INTO characters(name, homeland, favorite_color) VALUES ('Luigi', 'Mushroom Kingdom', 'Green');
+INSERT 0 1
+mario_database=> SELECT * FROM characters;
+mario_database=>                               
++--------------+-------+------------------+----------------+
+| character_id | name  |     homeland     | favorite_color |
++--------------+-------+------------------+----------------+
+|            1 | Mario | Mushroom Kingdom | Red            |
+|            2 | Luigi | Mushroom Kingdom | Green          |
++--------------+-------+------------------+----------------+
+(2 rows)
+
+mario_database=> INSERT INTO characters(name, homeland, favorite_color) VALUES ('Peach', 'Mushroom Kingdom', 'Pink');
+mario_database=> INSERT 0 1
 
