@@ -367,4 +367,152 @@ mario_database=>
 
 mario_database=> INSERT INTO characters(name, homeland, favorite_color) VALUES ('Peach', 'Mushroom Kingdom', 'Pink');
 mario_database=> INSERT 0 1
+mario_database=> INSERT INTO characters(name, homeland, favorite_color) VALUES ('Toadstool', 'Mushroom Kingdom', 'Red'), ('Bowser', 'Mushroom Kingdom', 'Green');
+mario_database=> INSERT 0 2
+                 INSERT INTO characters(name, homeland, favorite_color) VALUES ('Daisy', 'Sarasaland', 'Yellow'), ('Yoshi', 'Dinosaur Land', 'Green');
+mario_database=> INSERT 0 2
+mario_database=> SELECT * FROM characters;
+mario_database=>                                 
++--------------+-----------+------------------+----------------+
+| character_id |   name    |     homeland     | favorite_color |
++--------------+-----------+------------------+----------------+
+|            1 | Mario     | Mushroom Kingdom | Red            |
+|            2 | Luigi     | Mushroom Kingdom | Green          |
+|            3 | Peach     | Mushroom Kingdom | Pink           |
+|            4 | Toadstool | Mushroom Kingdom | Red            |
+|            5 | Bowser    | Mushroom Kingdom | Green          |
+|            6 | Daisy     | Sarasaland       | Yellow         |
+|            7 | Yoshi     | Dinosaur Land    | Green          |
++--------------+-----------+------------------+----------------+
+(7 rows)
+
+mario_database=> UPDATE characters SET favorite_color='Orange' WHERE name='Daisy';
+UPDATE 1
+mario_database=> SELECT * FROM characters;
+                                
++--------------+-----------+------------------+----------------+
+| character_id |   name    |     homeland     | favorite_color |
++--------------+-----------+------------------+----------------+
+|            1 | Mario     | Mushroom Kingdom | Red            |
+|            2 | Luigi     | Mushroom Kingdom | Green          |
+|            3 | Peach     | Mushroom Kingdom | Pink           |
+|            4 | Toadstool | Mushroom Kingdom | Red            |
+|            5 | Bowser    | Mushroom Kingdom | Green          |
+|            7 | Yoshi     | Dinosaur Land    | Green          |
+|            6 | Daisy     | Sarasaland       | Orange         |
++--------------+-----------+------------------+----------------+
+(7 rows)
+
+mario_database=> UPDATE characters SET name='Toad' WHERE favorite_color='Red';
+mario_database=> UPDATE 2
+                 SELECT * FROM characters;
+                               
++--------------+--------+------------------+----------------+
+| character_id |  name  |     homeland     | favorite_color |
++--------------+--------+------------------+----------------+
+|            2 | Luigi  | Mushroom Kingdom | Green          |
+|            3 | Peach  | Mushroom Kingdom | Pink           |
+|            5 | Bowser | Mushroom Kingdom | Green          |
+|            7 | Yoshi  | Dinosaur Land    | Green          |
+|            6 | Daisy  | Sarasaland       | Orange         |
+|            1 | Toad   | Mushroom Kingdom | Red            |
+|            4 | Toad   | Mushroom Kingdom | Red            |
++--------------+--------+------------------+----------------+
+(7 rows)
+
+mario_database=> UPDATE characters SET name='Mario' WHERE character_id=1;
+mario_database=> UPDATE 1
+                 SELECT * FROM characters;
+                               
++--------------+--------+------------------+----------------+
+| character_id |  name  |     homeland     | favorite_color |
++--------------+--------+------------------+----------------+
+|            2 | Luigi  | Mushroom Kingdom | Green          |
+|            3 | Peach  | Mushroom Kingdom | Pink           |
+|            5 | Bowser | Mushroom Kingdom | Green          |
+|            7 | Yoshi  | Dinosaur Land    | Green          |
+|            6 | Daisy  | Sarasaland       | Orange         |
+|            4 | Toad   | Mushroom Kingdom | Red            |
+|            1 | Mario  | Mushroom Kingdom | Red            |
++--------------+--------+------------------+----------------+
+(7 rows)
+
+mario_database=> UPDATE characters SET favorite_color='Blue' WHERE name='Toad';
+mario_database=> UPDATE 1
+                 UPDATE characters SET favorite_color='Yellow' WHERE name='Bowser';
+mario_database=> UPDATE 1
+                 UPDATE characters SET homeland='Koopa Kingdom' WHERE name='Bowser';
+UPDATE 1
+mario_database=> SELECT * FROM characters;
+                               
++--------------+--------+------------------+----------------+
+| character_id |  name  |     homeland     | favorite_color |
++--------------+--------+------------------+----------------+
+|            2 | Luigi  | Mushroom Kingdom | Green          |
+|            3 | Peach  | Mushroom Kingdom | Pink           |
+|            7 | Yoshi  | Dinosaur Land    | Green          |
+|            6 | Daisy  | Sarasaland       | Orange         |
+|            1 | Mario  | Mushroom Kingdom | Red            |
+|            4 | Toad   | Mushroom Kingdom | Blue           |
+|            5 | Bowser | Koopa Kingdom    | Yellow         |
++--------------+--------+------------------+----------------+
+(7 rows)
+
+mario_database=> SELECT * FROM characters ORDER BY character_id;
+                               
++--------------+--------+------------------+----------------+
+| character_id |  name  |     homeland     | favorite_color |
++--------------+--------+------------------+----------------+
+|            1 | Mario  | Mushroom Kingdom | Red            |
+|            2 | Luigi  | Mushroom Kingdom | Green          |
+|            3 | Peach  | Mushroom Kingdom | Pink           |
+|            4 | Toad   | Mushroom Kingdom | Blue           |
+|            5 | Bowser | Koopa Kingdom    | Yellow         |
+|            6 | Daisy  | Sarasaland       | Orange         |
+|            7 | Yoshi  | Dinosaur Land    | Green          |
++--------------+--------+------------------+----------------+
+(7 rows)
+
+mario_database=> ALTER TABLE characters ADD PRIMARY KEY(name);
+ALTER TABLE
+mario_database=> \d characters;
+mario_database=>                                              Table "public.characters"
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+|     Column     |         Type          | Collation | Nullable |                     Default                      |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+| character_id   | integer               |           | not null | nextval('characters_character_id_seq'::regclass) |
+| name           | character varying(30) |           | not null |                                                  |
+| homeland       | character varying(60) |           |          |                                                  |
+| favorite_color | character varying(30) |           |          |                                                  |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+Indexes:
+    "characters_pkey" PRIMARY KEY, btree (name)
+
+ALTER TABLE characters DROP CONSTRAINT characters_pkey;
+ALTER TABLE
+mario_database=> \d characters;
+                                             Table "public.characters"
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+|     Column     |         Type          | Collation | Nullable |                     Default                      |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+| character_id   | integer               |           | not null | nextval('characters_character_id_seq'::regclass) |
+| name           | character varying(30) |           | not null |                                                  |
+| homeland       | character varying(60) |           |          |                                                  |
+| favorite_color | character varying(30) |           |          |                                                  |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+
+mario_database=> ALTER TABLE characters ADD PRIMARY KEY(character_id);
+ALTER TABLE
+mario_database=> \d characters;
+mario_database=>                                              Table "public.characters"
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+|     Column     |         Type          | Collation | Nullable |                     Default                      |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+| character_id   | integer               |           | not null | nextval('characters_character_id_seq'::regclass) |
+| name           | character varying(30) |           | not null |                                                  |
+| homeland       | character varying(60) |           |          |                                                  |
+| favorite_color | character varying(30) |           |          |                                                  |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+Indexes:
+    "characters_pkey" PRIMARY KEY, btree (character_id)
 
