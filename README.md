@@ -563,4 +563,71 @@ mario_database=> ALTER TABLE more_info ADD COLUMN height INT;
 mario_database=> ALTER TABLE
                  ALTER TABLE more_info ADD COLUMN weight NUMERIC(4,1);
 ALTER TABLE
-mario_database=> 
+mario_database=> mario_database=> \d more_info;
+mario_database=>                                         Table "public.more_info"
++--------------+--------------+-----------+----------+-------------------------------------------------+
+|    Column    |     Type     | Collation | Nullable |                     Default                     |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+| more_info_id | integer      |           | not null | nextval('more_info_more_info_id_seq'::regclass) |
+| birthday     | date         |           |          |                                                 |
+| height       | integer      |           |          |                                                 |
+| weight       | numeric(4,1) |           |          |                                                 |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+Indexes:
+    "more_info_pkey" PRIMARY KEY, btree (more_info_id)
+
+mario_database=> ALTER TABLE more_info ADD COLUMN character_id INT REFERENCES characters(character_id);
+ALTER TABLE
+mario_database=> \d more_info;
+mario_database=>                                         Table "public.more_info"
++--------------+--------------+-----------+----------+-------------------------------------------------+
+|    Column    |     Type     | Collation | Nullable |                     Default                     |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+| more_info_id | integer      |           | not null | nextval('more_info_more_info_id_seq'::regclass) |
+| birthday     | date         |           |          |                                                 |
+| height       | integer      |           |          |                                                 |
+| weight       | numeric(4,1) |           |          |                                                 |
+| character_id | integer      |           |          |                                                 |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+Indexes:
+    "more_info_pkey" PRIMARY KEY, btree (more_info_id)
+Foreign-key constraints:
+    "more_info_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(character_id)
+
+ALTER TABLE more_info ADD UNIQUE(character_id);
+mario_database=> ALTER TABLE
+ALTER TABLE more_info ALTER COLUMN character_id SET NOT NULL;
+ALTER TABLE
+mario_database=> \d more_info;
+                                        Table "public.more_info"
++--------------+--------------+-----------+----------+-------------------------------------------------+
+|    Column    |     Type     | Collation | Nullable |                     Default                     |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+| more_info_id | integer      |           | not null | nextval('more_info_more_info_id_seq'::regclass) |
+| birthday     | date         |           |          |                                                 |
+| height       | integer      |           |          |                                                 |
+| weight       | numeric(4,1) |           |          |                                                 |
+| character_id | integer      |           | not null |                                                 |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+Indexes:
+    "more_info_pkey" PRIMARY KEY, btree (more_info_id)
+    "more_info_character_id_key" UNIQUE CONSTRAINT, btree (character_id)
+Foreign-key constraints:
+    "more_info_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(character_id)
+
+mario_database=> SELECT character_id FROM characters;
+        
++--------------+
+| character_id |
++--------------+
+|            2 |
+|            3 |
+|            7 |
+|            6 |
+|            1 |
+|            4 |
+|            5 |
++--------------+
+(7 rows)
+
+mario_database=>  
