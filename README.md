@@ -516,3 +516,51 @@ mario_database=>                                              Table "public.char
 Indexes:
     "characters_pkey" PRIMARY KEY, btree (character_id)
 
+mario_database=> CREATE TABLE more_info();
+CREATE TABLE
+mario_database=> \d
+mario_database=>                         List of relations
++--------+-----------------------------+----------+--------------+
+| Schema |            Name             |   Type   |    Owner     |
++--------+-----------------------------+----------+--------------+
+| public | characters                  | table    | freecodecamp |
+| public | characters_character_id_seq | sequence | freecodecamp |
+| public | more_info                   | table    | freecodecamp |
++--------+-----------------------------+----------+--------------+
+(3 rows)
+
+\d characters;
+mario_database=>                                              Table "public.characters"
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+|     Column     |         Type          | Collation | Nullable |                     Default                      |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+| character_id   | integer               |           | not null | nextval('characters_character_id_seq'::regclass) |
+| name           | character varying(30) |           | not null |                                                  |
+| homeland       | character varying(60) |           |          |                                                  |
+| favorite_color | character varying(30) |           |          |                                                  |
++----------------+-----------------------+-----------+----------+--------------------------------------------------+
+Indexes:
+    "characters_pkey" PRIMARY KEY, btree (character_id)
+
+ALTER TABLE more_info ADD COLUMN more_info_id SERIAL;
+ALTER TABLE
+mario_database=> ALTER TABLE more_info ADD PRIMARY KEY(more_info_id);
+ALTER TABLE
+mario_database-> \d
+mario_database->                         List of relations
++--------+-----------------------------+----------+--------------+
+| Schema |            Name             |   Type   |    Owner     |
++--------+-----------------------------+----------+--------------+
+| public | characters                  | table    | freecodecamp |
+| public | characters_character_id_seq | sequence | freecodecamp |
+| public | more_info                   | table    | freecodecamp |
+| public | more_info_more_info_id_seq  | sequence | freecodecamp |
++--------+-----------------------------+----------+--------------+
+(4 rows)              
+mario_database=> ALTER TABLE more_info ADD COLUMN birthday DATE;
+ALTER TABLE
+mario_database=> ALTER TABLE more_info ADD COLUMN height INT;
+mario_database=> ALTER TABLE
+                 ALTER TABLE more_info ADD COLUMN weight NUMERIC(4,1);
+ALTER TABLE
+mario_database=> 
