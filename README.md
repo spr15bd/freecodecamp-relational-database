@@ -630,4 +630,228 @@ mario_database=> SELECT character_id FROM characters;
 +--------------+
 (7 rows)
 
-mario_database=>  
+mario_database=> SELECT character_id, name FROM characters;
+             
++--------------+--------+
+| character_id |  name  |
++--------------+--------+
+|            2 | Luigi  |
+|            3 | Peach  |
+|            7 | Yoshi  |
+|            6 | Daisy  |
+|            1 | Mario  |
+|            4 | Toad   |
+|            5 | Bowser |
++--------------+--------+
+(7 rows)
+
+mario_database=> INSERT INTO more_info(character_id, birthday, height, weight) VALUES (1, '1981-07-09', 155, 64.5);
+mario_database=> INSERT 0 1
+\d more_info;
+mario_database=>                                         Table "public.more_info"
++--------------+--------------+-----------+----------+-------------------------------------------------+
+|    Column    |     Type     | Collation | Nullable |                     Default                     |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+| more_info_id | integer      |           | not null | nextval('more_info_more_info_id_seq'::regclass) |
+| birthday     | date         |           |          |                                                 |
+| height       | integer      |           |          |                                                 |
+| weight       | numeric(4,1) |           |          |                                                 |
+| character_id | integer      |           | not null |                                                 |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+Indexes:
+    "more_info_pkey" PRIMARY KEY, btree (more_info_id)
+    "more_info_character_id_key" UNIQUE CONSTRAINT, btree (character_id)
+Foreign-key constraints:
+    "more_info_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(character_id)
+
+\d more_info;
+                                        Table "public.more_info"
++--------------+--------------+-----------+----------+-------------------------------------------------+
+|    Column    |     Type     | Collation | Nullable |                     Default                     |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+| more_info_id | integer      |           | not null | nextval('more_info_more_info_id_seq'::regclass) |
+| birthday     | date         |           |          |                                                 |
+| height       | integer      |           |          |                                                 |
+| weight       | numeric(4,1) |           |          |                                                 |
+| character_id | integer      |           | not null |                                                 |
++--------------+--------------+-----------+----------+-------------------------------------------------+
+Indexes:
+    "more_info_pkey" PRIMARY KEY, btree (more_info_id)
+    "more_info_character_id_key" UNIQUE CONSTRAINT, btree (character_id)
+Foreign-key constraints:
+    "more_info_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(character_id)
+
+mario_database=> SELECT * FROM more_info;
+mario_database=>                                
++--------------+------------+--------+--------+--------------+
+| more_info_id |  birthday  | height | weight | character_id |
++--------------+------------+--------+--------+--------------+
+|            1 | 1981-07-09 |    155 |   64.5 |            1 |
++--------------+------------+--------+--------+--------------+
+(1 row)
+
+                 SELECT character_id, name FROM characters;
+             
++--------------+--------+
+| character_id |  name  |
++--------------+--------+
+|            2 | Luigi  |
+|            3 | Peach  |
+|            7 | Yoshi  |
+|            6 | Daisy  |
+|            1 | Mario  |
+|            4 | Toad   |
+|            5 | Bowser |
++--------------+--------+
+(7 rows)
+
+mario_database=> INSERT INTO more_info(character_id, birthday, height, weight) VALUES (2, '1983-07-14', 175, 48.8);
+INSERT 0 1
+mario_database=> SELECT * FROM more_info;
+                               
++--------------+------------+--------+--------+--------------+
+| more_info_id |  birthday  | height | weight | character_id |
++--------------+------------+--------+--------+--------------+
+|            1 | 1981-07-09 |    155 |   64.5 |            1 |
+|            2 | 1983-07-14 |    175 |   48.8 |            2 |
++--------------+------------+--------+--------+--------------+
+(2 rows)
+
+mario_database=> SELECT character_id, name FROM characters;
+             
++--------------+--------+
+| character_id |  name  |
++--------------+--------+
+|            2 | Luigi  |
+|            3 | Peach  |
+|            7 | Yoshi  |
+|            6 | Daisy  |
+|            1 | Mario  |
+|            4 | Toad   |
+|            5 | Bowser |
++--------------+--------+
+(7 rows)
+
+mario_database=> INSERT INTO more_info(character_id, birthday, height, weight) VALUES (3, '1985-10-18', 173, 52.2);
+mario_database=> INSERT 0 1
+                 SELECT character_id, name FROM characters WHERE name='Toad';
+mario_database=>             
++--------------+------+
+| character_id | name |
++--------------+------+
+|            4 | Toad |
++--------------+------+
+(1 row)
+
+                 INSERT INTO more_info(character_id, birthday, height, weight) VALUES (4, '1950-01-10', 66, 35.6);
+INSERT 0 1
+mario_database=> SELECT * FROM more_info;
+mario_database=>                                
++--------------+------------+--------+--------+--------------+
+| more_info_id |  birthday  | height | weight | character_id |
++--------------+------------+--------+--------+--------------+
+|            1 | 1981-07-09 |    155 |   64.5 |            1 |
+|            2 | 1983-07-14 |    175 |   48.8 |            2 |
+|            3 | 1985-10-18 |    173 |   52.2 |            3 |
+|            4 | 1950-01-10 |     66 |   35.6 |            4 |
++--------------+------------+--------+--------+--------------+
+(4 rows)
+
+                 SELECT character_id, name FROM characters WHERE name='Bowser';
+             
++--------------+--------+
+| character_id |  name  |
++--------------+--------+
+|            5 | Bowser |
++--------------+--------+
+(1 row)
+
+mario_database=> INSERT INTO more_info(character_id, birthday, height, weight) VALUES (5, '1990-10-29', 258, 300);
+INSERT 0 1
+mario_database=> SELECT character_id, name FROM characters WHERE name='Daisy';
+mario_database=>             
++--------------+-------+
+| character_id | name  |
++--------------+-------+
+|            6 | Daisy |
++--------------+-------+
+(1 row)
+
+                 INSERT INTO more_info(character_id, birthday) VALUES (6, '1989-07-31');
+INSERT 0 1
+mario_database=> SELECT * FROM more_info;
+                               
++--------------+------------+--------+--------+--------------+
+| more_info_id |  birthday  | height | weight | character_id |
++--------------+------------+--------+--------+--------------+
+|            1 | 1981-07-09 |    155 |   64.5 |            1 |
+|            2 | 1983-07-14 |    175 |   48.8 |            2 |
+|            3 | 1985-10-18 |    173 |   52.2 |            3 |
+|            4 | 1950-01-10 |     66 |   35.6 |            4 |
+|            5 | 1990-10-29 |    258 |  300.0 |            5 |
+|            6 | 1989-07-31 |        |        |            6 |
++--------------+------------+--------+--------+--------------+
+(6 rows)
+
+mario_database=> SELECT character_id, name FROM characters WHERE name='Yoshi';
+mario_database=>             
++--------------+-------+
+| character_id | name  |
++--------------+-------+
+|            7 | Yoshi |
++--------------+-------+
+(1 row)
+
+                 INSERT INTO more_info(character_id, birthday, height, weight) VALUES (7, '1990-04-13', 162, 59.1);
+INSERT 0 1
+mario_database=> SELECT * FROM more_info;
+mario_database=>                                
++--------------+------------+--------+--------+--------------+
+| more_info_id |  birthday  | height | weight | character_id |
++--------------+------------+--------+--------+--------------+
+|            1 | 1981-07-09 |    155 |   64.5 |            1 |
+|            2 | 1983-07-14 |    175 |   48.8 |            2 |
+|            3 | 1985-10-18 |    173 |   52.2 |            3 |
+|            4 | 1950-01-10 |     66 |   35.6 |            4 |
+|            5 | 1990-10-29 |    258 |  300.0 |            5 |
+|            6 | 1989-07-31 |        |        |            6 |
+|            7 | 1990-04-13 |    162 |   59.1 |            7 |
++--------------+------------+--------+--------+--------------+
+(7 rows)
+
+UPDATE more_info 
+mario_database=> ALTER TABLE more_info RENAME COLUMN height TO height_in_cm;
+ALTER TABLE
+mario_database=> ALTER TABLE more_info RENAME COLUMN weight TO weight_in_kg;
+mario_database=> ALTER TABLE
+                 SELECT * FROM more_info;
+mario_database=>                                      
++--------------+------------+--------------+--------------+--------------+
+| more_info_id |  birthday  | height_in_cm | weight_in_kg | character_id |
++--------------+------------+--------------+--------------+--------------+
+|            1 | 1981-07-09 |          155 |         64.5 |            1 |
+|            2 | 1983-07-14 |          175 |         48.8 |            2 |
+|            3 | 1985-10-18 |          173 |         52.2 |            3 |
+|            4 | 1950-01-10 |           66 |         35.6 |            4 |
+|            5 | 1990-10-29 |          258 |        300.0 |            5 |
+|            6 | 1989-07-31 |              |              |            6 |
+|            7 | 1990-04-13 |          162 |         59.1 |            7 |
++--------------+------------+--------------+--------------+--------------+
+(7 rows)
+
+CREATE TABLE sounds(sound_id SERIAL PRIMARY KEY);
+mario_database=> CREATE TABLE
+mario_database=> \d
+mario_database=>                         List of relations
++--------+-----------------------------+----------+--------------+
+| Schema |            Name             |   Type   |    Owner     |
++--------+-----------------------------+----------+--------------+
+| public | characters                  | table    | freecodecamp |
+| public | characters_character_id_seq | sequence | freecodecamp |
+| public | more_info                   | table    | freecodecamp |
+| public | more_info_more_info_id_seq  | sequence | freecodecamp |
+| public | sounds                      | table    | freecodecamp |
+| public | sounds_sound_id_seq         | sequence | freecodecamp |
++--------+-----------------------------+----------+--------------+
+(6 rows)
+
