@@ -855,3 +855,97 @@ mario_database=>                         List of relations
 +--------+-----------------------------+----------+--------------+
 (6 rows)
 
+mario_database=> ALTER TABLE sounds ADD COLUMN filename VARCHAR(40) NOT NULL UNIQUE;
+ALTER TABLE
+mario_database=> ALTER TABLE sounds ADD COLUMN character_id INT NOT NULL REFERENCES characters(character_id);
+ALTER TABLE
+mario_database=> SELECT * FROM sounds;
+mario_database=>                    
++----------+----------+--------------+
+| sound_id | filename | character_id |
++----------+----------+--------------+
++----------+----------+--------------+
+(0 rows)
+
+\d sounds
+                                          Table "public.sounds"
++--------------+-----------------------+-----------+----------+------------------------------------------+
+|    Column    |         Type          | Collation | Nullable |                 Default                  |
++--------------+-----------------------+-----------+----------+------------------------------------------+
+| sound_id     | integer               |           | not null | nextval('sounds_sound_id_seq'::regclass) |
+| filename     | character varying(40) |           | not null |                                          |
+| character_id | integer               |           | not null |                                          |
++--------------+-----------------------+-----------+----------+------------------------------------------+
+Indexes:
+    "sounds_pkey" PRIMARY KEY, btree (sound_id)
+    "sounds_filename_key" UNIQUE CONSTRAINT, btree (filename)
+Foreign-key constraints:
+    "sounds_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(character_id)
+
+mario_database=> SELECT * FROM characters ORDER BY character_id;
+                               
++--------------+--------+------------------+----------------+
+| character_id |  name  |     homeland     | favorite_color |
++--------------+--------+------------------+----------------+
+|            1 | Mario  | Mushroom Kingdom | Red            |
+|            2 | Luigi  | Mushroom Kingdom | Green          |
+|            3 | Peach  | Mushroom Kingdom | Pink           |
+|            4 | Toad   | Mushroom Kingdom | Blue           |
+|            5 | Bowser | Koopa Kingdom    | Yellow         |
+|            6 | Daisy  | Sarasaland       | Orange         |
+|            7 | Yoshi  | Dinosaur Land    | Green          |
++--------------+--------+------------------+----------------+
+(7 rows)
+
+mario_database=> INSERT INTO sounds (filename, character_id) VALUES ('its-a-me.wav', 1);
+INSERT 0 1
+mario_database=> INSERT INTO sounds (filename, character_id) VALUES ('yippee.wav', 1);
+INSERT 0 1
+mario_database=> INSERT INTO sounds (filename, character_id) VALUES ('ha-ha.wav', 2);
+mario_database=> INSERT 0 1
+                 INSERT INTO sounds (filename, character_id) VALUES ('oh-yeah.wav', 2);
+mario_database=> INSERT 0 1
+                 INSERT INTO sounds (filename, character_id) VALUES ('yay.wav', 3);
+INSERT 0 1
+mario_database=> INSERT INTO sounds (filename, character_id) VALUES ('woo-hoo.wav', 3);
+INSERT 0 1
+mario_database=> INSERT INTO sounds (filename, character_id) VALUES ('mm-hmm.wav', 3), ('yahoo.wav', 1);
+INSERT 0 2
+mario_database=> SELECT * FROM sounds;
+mario_database=>                      
++----------+--------------+--------------+
+| sound_id |   filename   | character_id |
++----------+--------------+--------------+
+|        1 | its-a-me.wav |            1 |
+|        2 | yippee.wav   |            1 |
+|        3 | ha-ha.wav    |            2 |
+|        4 | oh-yeah.wav  |            2 |
+|        5 | yay.wav      |            3 |
+|        6 | woo-hoo.wav  |            3 |
+|        7 | mm-hmm.wav   |            3 |
+|        8 | yahoo.wav    |            1 |
++----------+--------------+--------------+
+(8 rows)
+
+CREATE TABLE actions(action_id SERIAL PRIMARY KEY);
+CREATE TABLE
+mario_database=> ALTER TABLE actions ADD COLUMN action VARCHAR(20) UNIQUE NOT NULL;
+ALTER TABLE
+mario_database=> INSERT INTO actions (action) VALUES('run');
+INSERT 0 1
+mario_database=> INSERT INTO actions (action) VALUES('jump');
+mario_database=> INSERT 0 1
+                 INSERT INTO actions (action) VALUES('duck');
+INSERT 0 1
+mario_database=> SELECT * FROM actions;
+           
++-----------+--------+
+| action_id | action |
++-----------+--------+
+|         1 | run    |
+|         2 | jump   |
+|         3 | duck   |
++-----------+--------+
+(3 rows)
+
+mario_database=> 
