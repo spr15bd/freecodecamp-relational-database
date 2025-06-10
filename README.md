@@ -948,4 +948,132 @@ mario_database=> SELECT * FROM actions;
 +-----------+--------+
 (3 rows)
 
+mario_database=> CREATE TABLE character_actions();
+CREATE TABLE
+mario_database=> ALTER TABLE character_actions ADD COLUMN character_id INT NOT NULL;
+mario_database=> ALTER TABLE
+mario_database=> ALTER TABLE character_actions ADD FOREIGN KEY(character_id) REFERENCES characters(character_id);
+ALTER TABLE
+mario_database=> \d character_actions
+             Table "public.character_actions"
++--------------+---------+-----------+----------+---------+
+|    Column    |  Type   | Collation | Nullable | Default |
++--------------+---------+-----------+----------+---------+
+| character_id | integer |           | not null |         |
++--------------+---------+-----------+----------+---------+
+Foreign-key constraints:
+    "character_actions_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(character_id)
+
+mario_database=> ALTER TABLE character_actions ADD COLUMN action_id INT NOT NULL;
+ALTER TABLE
+mario_database=> ALTER TABLE character_actions ADD FOREIGN KEY(action_id) REFERENCES actions(action_id);
+ALTER TABLE
+mario_database=> \d character_actions
+             Table "public.character_actions"
++--------------+---------+-----------+----------+---------+
+|    Column    |  Type   | Collation | Nullable | Default |
++--------------+---------+-----------+----------+---------+
+| character_id | integer |           | not null |         |
+| action_id    | integer |           | not null |         |
++--------------+---------+-----------+----------+---------+
+Foreign-key constraints:
+    "character_actions_action_id_fkey" FOREIGN KEY (action_id) REFERENCES actions(action_id)
+    "character_actions_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(character_id)
+
+mario_database=> ALTER TABLE character_actions ADD PRIMARY KEY(character_id, action_id);
+ALTER TABLE
+mario_database=> \d character_actions
+             Table "public.character_actions"
++--------------+---------+-----------+----------+---------+
+|    Column    |  Type   | Collation | Nullable | Default |
++--------------+---------+-----------+----------+---------+
+| character_id | integer |           | not null |         |
+| action_id    | integer |           | not null |         |
++--------------+---------+-----------+----------+---------+
+Indexes:
+    "character_actions_pkey" PRIMARY KEY, btree (character_id, action_id)
+Foreign-key constraints:
+    "character_actions_action_id_fkey" FOREIGN KEY (action_id) REFERENCES actions(action_id)
+    "character_actions_character_id_fkey" FOREIGN KEY (character_id) REFERENCES characters(character_id)
+
+mario_database=> SELECT * FROM characters
+mario_database=>                                
++--------------+--------+------------------+----------------+
+| character_id |  name  |     homeland     | favorite_color |
++--------------+--------+------------------+----------------+
+|            2 | Luigi  | Mushroom Kingdom | Green          |
+|            3 | Peach  | Mushroom Kingdom | Pink           |
+|            7 | Yoshi  | Dinosaur Land    | Green          |
+|            6 | Daisy  | Sarasaland       | Orange         |
+|            1 | Mario  | Mushroom Kingdom | Red            |
+|            4 | Toad   | Mushroom Kingdom | Blue           |
+|            5 | Bowser | Koopa Kingdom    | Yellow         |
++--------------+--------+------------------+----------------+
+(7 rows)
+
+SELECT * FROM actions;
+mario_database=>            
++-----------+--------+
+| action_id | action |
++-----------+--------+
+|         1 | run    |
+|         2 | jump   |
+|         3 | duck   |
++-----------+--------+
+(3 rows)
+
+mario_database=> INSERT INTO character_actions(character_id, action_id) VALUES (7, 1), (7, 2), (7, 3);
+mario_database=> INSERT 0 3
+mario_database=> SELECT * FROM character_actions;
+              
++--------------+-----------+
+| character_id | action_id |
++--------------+-----------+
+|            7 |         1 |
+|            7 |         2 |
+|            7 |         3 |
++--------------+-----------+
+(3 rows)
+
+mario_database=> INSERT INTO character_actions(character_id, action_id) VALUES (6, 1), (6, 2), (6, 3);
+INSERT 0 3
+mario_database=> INSERT INTO character_actions(character_id, action_id) VALUES (5, 1), (5, 2), (5, 3);
+INSERT 0 3
+mario_database=> INSERT INTO character_actions(character_id, action_id) VALUES (4, 1), (4, 2), (4, 3);
+INSERT 0 3
+mario_database=> INSERT INTO character_actions(character_id, action_id) VALUES (3, 1), (3, 2), (3, 3);
+INSERT 0 3
+mario_database=> INSERT INTO character_actions(character_id, action_id) VALUES (2, 1), (2, 2), (2, 3);
+mario_database=> INSERT 0 3
+                 INSERT INTO character_actions(character_id, action_id) VALUES (1, 1), (1, 2), (1, 3);
+INSERT 0 3
+mario_database=> SELECT * FROM character_actions;
+              
++--------------+-----------+
+| character_id | action_id |
++--------------+-----------+
+|            7 |         1 |
+|            7 |         2 |
+|            7 |         3 |
+|            6 |         1 |
+|            6 |         2 |
+|            6 |         3 |
+|            5 |         1 |
+|            5 |         2 |
+|            5 |         3 |
+|            4 |         1 |
+|            4 |         2 |
+|            4 |         3 |
+|            3 |         1 |
+|            3 |         2 |
+|            3 |         3 |
+|            2 |         1 |
+|            2 |         2 |
+|            2 |         3 |
+|            1 |         1 |
+|            1 |         2 |
+|            1 |         3 |
++--------------+-----------+
+(21 rows)
+
 mario_database=> 
