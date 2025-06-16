@@ -29,3 +29,37 @@ postgres=> \l
 (4 rows)
 
 postgres=> 
+
+
+
+
+camper: /project$ psql --username=freecodecamp --dbname=postgres
+Border style is 2.
+Pager usage is off.
+psql (12.17 (Ubuntu 12.17-1.pgdg22.04+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+postgres=> \d
+Did not find any relations.
+postgres=> \c universe
+connection to server at "127.0.0.1", port 5432 failed: FATAL:  database "universe" does not exist
+Previous connection kept
+postgres=> CREATE DATABASE universe
+postgres-> ;
+CREATE DATABASE
+postgres=> \c universe
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "universe" as user "freecodecamp".
+universe=> CREATE TABLE galaxy;
+ERROR:  syntax error at or near ";"
+LINE 1: CREATE TABLE galaxy;
+                           ^
+universe=> CREATE TABLE galaxy();
+CREATE TABLE
+universe=> CREATE TABLE star();
+CREATE TABLE
+universe=> CREATE TABLE planet();
+CREATE TABLE
+universe=> CREATE TABLE moon();
+CREATE TABLE
