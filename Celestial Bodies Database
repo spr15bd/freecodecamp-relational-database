@@ -31,9 +31,6 @@ postgres=> \l
 postgres=> \c universe
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
 You are now connected to database "universe" as user "freecodecamp".
-universe=> CREATE TABLE galaxy;
-ERROR:  syntax error at or near ";"
-LINE 1: CREATE TABLE galaxy;
                            ^
 universe=> CREATE TABLE galaxy();
 CREATE TABLE
