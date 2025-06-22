@@ -32,11 +32,9 @@ postgres=> \c universe
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
 You are now connected to database "universe" as user "freecodecamp".
                            ^
-universe=> CREATE TABLE galaxy();
+postgres=> CREATE TABLE galaxy(); CREATE TABLE star(); CREATE TABLE planet(); CREATE TABLE moon();
 CREATE TABLE
-universe=> CREATE TABLE star();
 CREATE TABLE
-universe=> CREATE TABLE planet();
 CREATE TABLE
-universe=> CREATE TABLE moon();
 CREATE TABLE
+postgres=>
