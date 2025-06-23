@@ -12,8 +12,7 @@ Type "help" for help.
 
 postgres=> CREATE DATABASE universe;
 CREATE DATABASE
-postgres=> \d
-Did not find any relations.
+
 postgres=> \l
                                  List of databases
 +-----------+--------------+----------+---------+---------+-----------------------+
