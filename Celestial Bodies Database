@@ -37,3 +37,5 @@ CREATE TABLE
 CREATE TABLE
 CREATE TABLE
 postgres=>
+
+-- add primary keys to these new tables
