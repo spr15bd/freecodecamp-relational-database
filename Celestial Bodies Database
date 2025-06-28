@@ -39,10 +39,11 @@ universe(> distance INT,
 universe(> size INT
 universe(> );
 CREATE TABLE
-universe=> 
-
-
-CREATE TABLE star(); CREATE TABLE planet(); CREATE TABLE moon();
+universe=> CREATE TABLE star (
+universe(> star_id INTEGER PRIMARY KEY
+universe(> name VARCHAR (30) NOT NULL
+universe(> ); 
+CREATE TABLE planet(); CREATE TABLE moon();
 CREATE TABLE
 CREATE TABLE
 CREATE TABLE
