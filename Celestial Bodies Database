@@ -1,8 +1,3 @@
-This is one of the required projects to earn your certification.
-
-For this project, you will build a database of celestial bodies using PostgreSQL.
-
-
 camper: /project$ psql --username=freecodecamp --dbname=postgres
 Border style is 2.
 Pager usage is off.
@@ -12,7 +7,6 @@ Type "help" for help.
 
 postgres=> CREATE DATABASE universe;
 CREATE DATABASE
-
 postgres=> \l
                                  List of databases
 +-----------+--------------+----------+---------+---------+-----------------------+
@@ -30,13 +24,12 @@ postgres=> \l
 postgres=> \c universe
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
 You are now connected to database "universe" as user "freecodecamp".
-                         
 universe=> CREATE TABLE galaxy (
 universe(> galaxy_id INTEGER PRIMARY KEY UNIQUE,
 universe(> name VARCHAR (30) NOT NULL,
-universe(> Constellation VARCHAR(30) NOT NULL,
+universe(> constellation VARCHAR(30) NOT NULL,
 universe(> distance INT,
-universe(> size INT
+universe(> size int
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE star (
@@ -44,11 +37,9 @@ universe(> star_id INTEGER PRIMARY KEY,
 universe(> name VARCHAR (30) NOT NULL,
 universe(> age INT,
 universe(> detectedCompanions INT
-universe(> ); 
-CREATE TABLE planet(); CREATE TABLE moon();
+universe(> );
+CREATE TABLE
+universe=> CREATE TABLE planet(); CREATE TABLE moon();
 CREATE TABLE
 CREATE TABLE
-CREATE TABLE
-universe=>
-
--- add primary keys to these new tables
+universe=> 
