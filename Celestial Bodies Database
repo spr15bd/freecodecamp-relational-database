@@ -39,7 +39,16 @@ universe(> age INT,
 universe(> detectedCompanions INT
 universe(> );
 CREATE TABLE
-universe=> CREATE TABLE planet(); CREATE TABLE moon();
+universe=> 
+universe=> CREATE TABLE planet (
+universe(> name VARCHAR(30) NOT NULL,
+universe(> planet_id INTEGER PRIMARY KEY UNIQUE,
+universe(> star_id INTEGER,
+universe(> year_discovered INTEGER,
+universe(> orbital_period INTEGER
+universe(> );
+CREATE TABLE
+universe=> CREATE TABLE moon();
 CREATE TABLE
 CREATE TABLE
 universe=> 
