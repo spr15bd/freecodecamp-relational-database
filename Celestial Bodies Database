@@ -40,12 +40,13 @@ universe(> detectedCompanions INT
 universe(> );
 CREATE TABLE
 universe=> 
-universe=> CREATE TABLE planet (
-universe(> name VARCHAR(30) NOT NULL,
+CREATE TABLE planet (
 universe(> planet_id INTEGER PRIMARY KEY UNIQUE,
-universe(> star_id INTEGER,
-universe(> year_discovered INTEGER,
-universe(> orbital_period INTEGER
+universe(> name VARCHAR(30) NOT NULL,
+universe(> star_id INT,
+universe(> CONSTRAINT fk_star
+universe(> FOREIGN KEY(star_id)
+universe(> REFERENCES star(star_id)
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE moon();
