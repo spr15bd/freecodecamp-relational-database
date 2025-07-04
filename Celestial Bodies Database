@@ -5,51 +5,42 @@ psql (12.17 (Ubuntu 12.17-1.pgdg22.04+1))
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
 Type "help" for help.
 
-postgres=> CREATE DATABASE universe;
-CREATE DATABASE
-postgres=> \l
-                                 List of databases
-+-----------+--------------+----------+---------+---------+-----------------------+
-|   Name    |    Owner     | Encoding | Collate |  Ctype  |   Access privileges   |
-+-----------+--------------+----------+---------+---------+-----------------------+
-| postgres  | postgres     | UTF8     | C.UTF-8 | C.UTF-8 |                       |
-| template0 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
-|           |              |          |         |         | postgres=CTc/postgres |
-| template1 | postgres     | UTF8     | C.UTF-8 | C.UTF-8 | =c/postgres          +|
-|           |              |          |         |         | postgres=CTc/postgres |
-| universe  | freecodecamp | UTF8     | C.UTF-8 | C.UTF-8 |                       |
-+-----------+--------------+----------+---------+---------+-----------------------+
-(4 rows)
-
 postgres=> \c universe
-SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
-You are now connected to database "universe" as user "freecodecamp".
-universe=> CREATE TABLE galaxy (
-universe(> galaxy_id INTEGER PRIMARY KEY UNIQUE,
-universe(> name VARCHAR (30) NOT NULL,
-universe(> constellation VARCHAR(30) NOT NULL,
-universe(> distance INT,
-universe(> size int
-universe(> );
+connection to server at "127.0.0.1", port 5432 failed: FATAL:  database "universe" does not exist
+Previous connection kept
+postgres=> CREATE TABLE galaxy (
+postgres(> galaxy_id INTEGER PRIMARY KEY UNIQUE,
+postgres(> name VARCHAR (30) NOT NULL,
+postgres(> constellation VARCHAR(30) NOT NULL,
+postgres(> distance INT,
+postgres(> size int
+postgres(> );
 CREATE TABLE
-universe=> CREATE TABLE star (
-universe(> star_id INTEGER PRIMARY KEY,
-universe(> name VARCHAR (30) NOT NULL,
-universe(> age INT,
-universe(> detectedCompanions INT
-universe(> );
+postgres=> CREATE TABLE star (
+postgres(> star_id INTEGER PRIMARY KEY,
+postgres(> name VARCHAR (30) NOT NULL,
+postgres(> age INT,
+postgres(> detectedCompanions INT
+postgres(> );
 CREATE TABLE
-universe=> 
-CREATE TABLE planet (
-universe(> planet_id INTEGER PRIMARY KEY UNIQUE,
-universe(> name VARCHAR(30) NOT NULL,
-universe(> star_id INT,
-universe(> CONSTRAINT fk_star
-universe(> FOREIGN KEY(star_id)
-universe(> REFERENCES star(star_id)
-universe(> );
+postgres=> CREATE TABLE planet (
+postgres(> planet_id INTEGER PRIMARY KEY UNIQUE,
+postgres(> name VARCHAR(30) NOT NULL,
+postgres(> star_id INT,
+postgres(> CONSTRAINT fk_star
+postgres(> FOREIGN KEY(star_id)
+postgres(> REFERENCES star(star_id)
+postgres(> );
 CREATE TABLE
-universe=> CREATE TABLE moon();
+postgres=> CREATE TABLE moon(
+postgres(> moon_id INT PRIMARY KEY UNIQUE,
+postgres(> name VARCHAR(30) NOT NULL,
+postgres(> planet_id INT,
+postgres(> alternative_names VARCHAR(30),
+postgres(> discovered_by VARCHAR(30),
+postgres(> CONSTRAINT fk_moon
+postgres(> FOREIGN KEY(planet_id)
+postgres(> REFERENCES planet(planet_id)
+postgres(> );
 CREATE TABLE
-CREATE TABLE
-universe=> 
+postgres=> 
