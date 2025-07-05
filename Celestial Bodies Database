@@ -5,42 +5,44 @@ psql (12.17 (Ubuntu 12.17-1.pgdg22.04+1))
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
 Type "help" for help.
 
-postgres=> \c universe
-connection to server at "127.0.0.1", port 5432 failed: FATAL:  database "universe" does not exist
-Previous connection kept
-postgres=> CREATE TABLE galaxy (
-postgres(> galaxy_id INTEGER PRIMARY KEY UNIQUE,
-postgres(> name VARCHAR (30) NOT NULL,
-postgres(> constellation VARCHAR(30) NOT NULL,
-postgres(> distance INT,
-postgres(> size int
-postgres(> );
+postgres=> CREATE DATABASE universe;
+CREATE DATABASE
+postgres=> \c universe;
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "universe" as user "freecodecamp".
+universe=> CREATE TABLE galaxy (
+universe(> galaxy_id INTEGER PRIMARY KEY UNIQUE,
+universe(> name VARCHAR (30) NOT NULL,
+universe(> constellation VARCHAR(30) NOT NULL,
+universe(> distance INT,
+universe(> size int
+universe(> );
 CREATE TABLE
-postgres=> CREATE TABLE star (
-postgres(> star_id INTEGER PRIMARY KEY,
-postgres(> name VARCHAR (30) NOT NULL,
-postgres(> age INT,
-postgres(> detectedCompanions INT
-postgres(> );
+universe=> CREATE TABLE star (
+universe(> star_id INTEGER PRIMARY KEY,
+universe(> name VARCHAR (30) NOT NULL,
+universe(> age INT,
+universe(> detectedCompanions INT
+universe(> );
 CREATE TABLE
-postgres=> CREATE TABLE planet (
-postgres(> planet_id INTEGER PRIMARY KEY UNIQUE,
-postgres(> name VARCHAR(30) NOT NULL,
-postgres(> star_id INT,
-postgres(> CONSTRAINT fk_star
-postgres(> FOREIGN KEY(star_id)
-postgres(> REFERENCES star(star_id)
-postgres(> );
+universe=> CREATE TABLE planet (
+universe(> planet_id INTEGER PRIMARY KEY UNIQUE,
+universe(> name VARCHAR(30) NOT NULL,
+universe(> star_id INT,
+universe(> CONSTRAINT fk_star
+universe(> FOREIGN KEY(star_id)
+universe(> REFERENCES star(star_id)
+universe(> );
 CREATE TABLE
-postgres=> CREATE TABLE moon(
-postgres(> moon_id INT PRIMARY KEY UNIQUE,
-postgres(> name VARCHAR(30) NOT NULL,
-postgres(> planet_id INT,
-postgres(> alternative_names VARCHAR(30),
-postgres(> discovered_by VARCHAR(30),
-postgres(> CONSTRAINT fk_moon
-postgres(> FOREIGN KEY(planet_id)
-postgres(> REFERENCES planet(planet_id)
-postgres(> );
+universe=> CREATE TABLE moon(
+universe(> moon_id INT PRIMARY KEY UNIQUE,
+universe(> name VARCHAR(30) NOT NULL,
+universe(> planet_id INT,
+universe(> alternative_names VARCHAR(30),
+universe(> discovered_by VARCHAR(30),
+universe(> CONSTRAINT fk_moon
+universe(> FOREIGN KEY(planet_id)
+universe(> REFERENCES planet(planet_id)
+universe(> );
 CREATE TABLE
-postgres=> 
+universe=> 
