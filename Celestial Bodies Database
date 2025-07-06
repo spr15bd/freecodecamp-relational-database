@@ -14,7 +14,7 @@ universe=> CREATE TABLE galaxy (
 universe(> galaxy_id INTEGER PRIMARY KEY UNIQUE,
 universe(> name VARCHAR (30) NOT NULL,
 universe(> constellation VARCHAR(30) NOT NULL,
-universe(> distance INT,
+universe(> distance NUMERIC,
 universe(> size int
 universe(> );
 CREATE TABLE
