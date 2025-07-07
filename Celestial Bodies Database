@@ -39,7 +39,7 @@ universe(> moon_id INT PRIMARY KEY UNIQUE,
 universe(> name VARCHAR(30) NOT NULL,
 universe(> planet_id INT,
 universe(> alternative_names VARCHAR(30),
-universe(> discovered_by VARCHAR(30),
+universe(> discovered_by TEXT,
 universe(> CONSTRAINT fk_moon
 universe(> FOREIGN KEY(planet_id)
 universe(> REFERENCES planet(planet_id)
