@@ -45,4 +45,8 @@ universe(> FOREIGN KEY(planet_id)
 universe(> REFERENCES planet(planet_id)
 universe(> );
 CREATE TABLE
+universe=> CREATE TABLE test(
+universe(> isTest BOOLEAN
+universe(> );
+CREATE TABLE
 universe=> 
