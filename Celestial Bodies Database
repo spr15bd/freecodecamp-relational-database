@@ -22,7 +22,8 @@ universe=> CREATE TABLE star (
 universe(> star_id INTEGER PRIMARY KEY,
 universe(> name VARCHAR (30) NOT NULL,
 universe(> age INT,
-universe(> detectedCompanions INT
+universe(> detectedCompanions INT,
+universe(> mass NUMERIC(10,2)
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE planet (
