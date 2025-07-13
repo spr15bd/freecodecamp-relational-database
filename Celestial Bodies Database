@@ -11,7 +11,7 @@ postgres=> \c universe;
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
 You are now connected to database "universe" as user "freecodecamp".
 universe=> CREATE TABLE galaxy (
-universe(> galaxy_id INTEGER PRIMARY KEY UNIQUE,
+universe(> galaxy_id INT PRIMARY KEY UNIQUE,
 universe(> name VARCHAR (30) NOT NULL,
 universe(> constellation VARCHAR(30) NOT NULL,
 universe(> distance NUMERIC,
@@ -19,15 +19,18 @@ universe(> size int
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE star (
-universe(> star_id INTEGER PRIMARY KEY,
+universe(> star_id INT PRIMARY KEY,
 universe(> name VARCHAR (30) NOT NULL,
 universe(> age INT,
 universe(> detectedCompanions INT,
-universe(> galaxy_id INT
+universe(> galaxy_id INT,
+universe-> CONSTRAINT fk_galaxy
+universe-> FOREIGN KEY(galaxy_id)
+universe-> REFERENCES galaxy(galaxy_id);
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE planet (
-universe(> planet_id INTEGER PRIMARY KEY UNIQUE,
+universe(> planet_id INT PRIMARY KEY UNIQUE,
 universe(> name VARCHAR(30) NOT NULL,
 universe(> star_id INT,
 universe(> CONSTRAINT fk_star
@@ -47,12 +50,8 @@ universe(> REFERENCES planet(planet_id)
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE context(
+universe=> context_id INT PRIMARY KEY,
 universe(> isDisplayed BOOLEAN
 universe(> );
 CREATE TABLE
-universe=> ALTER TABLE star
-universe-> ADD CONSTRAINT fk_galaxy
-universe-> FOREIGN KEY(galaxy_id)
-universe-> REFERENCES galaxy(galaxy_id);
-ALTER TABLE
 universe=> 
