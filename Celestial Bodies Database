@@ -35,6 +35,7 @@ universe(> name VARCHAR(30) NOT NULL,
 universe(> star_id INT,
 universe(> CONSTRAINT fk_star
 universe(> FOREIGN KEY(star_id)
+universe(> hasMoons BOOLEAN,
 universe(> REFERENCES star(star_id)
 universe(> );
 CREATE TABLE
