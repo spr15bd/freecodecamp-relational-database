@@ -20,13 +20,13 @@ universe(> );
 CREATE TABLE
 universe=> CREATE TABLE star (
 universe(> star_id INT PRIMARY KEY,
-universe(> name VARCHAR (30) NOT NULL,
+universe(> name VARCHAR(30) NOT NULL,
 universe(> age INT,
 universe(> detectedCompanions INT,
 universe(> galaxy_id INT,
 universe-> CONSTRAINT fk_galaxy
 universe-> FOREIGN KEY(galaxy_id)
-universe-> REFERENCES galaxy(galaxy_id);
+universe-> REFERENCES galaxy(galaxy_id)
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE planet (
