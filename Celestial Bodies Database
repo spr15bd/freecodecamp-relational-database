@@ -24,9 +24,9 @@ universe(> name VARCHAR(30) NOT NULL,
 universe(> age INT,
 universe(> detectedCompanions INT,
 universe(> galaxy_id INT,
-universe-> CONSTRAINT fk_galaxy
-universe-> FOREIGN KEY(galaxy_id)
-universe-> REFERENCES galaxy(galaxy_id)
+universe(> CONSTRAINT fk_galaxy
+universe(> FOREIGN KEY(galaxy_id)
+universe(> REFERENCES galaxy(galaxy_id)
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE planet (
@@ -50,9 +50,10 @@ universe(> FOREIGN KEY(planet_id)
 universe(> REFERENCES planet(planet_id)
 universe(> );
 CREATE TABLE
-universe=> CREATE TABLE context(
-universe=> context_id INT PRIMARY KEY,
-universe(> isDisplayed BOOLEAN
+universe=> CREATE TABLE asteroid(
+universe(> asteroid_id INT PRIMARY KEY,
+universe(> name VARCHAR(30) NOT NULL,
+universe(> is_spherical BOOLEAN
 universe(> );
 CREATE TABLE
 universe=> 
