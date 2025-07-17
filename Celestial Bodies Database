@@ -12,7 +12,7 @@ SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, co
 You are now connected to database "universe" as user "freecodecamp".
 universe=> CREATE TABLE galaxy (
 universe(> galaxy_id INT PRIMARY KEY UNIQUE,
-universe(> name VARCHAR (30) NOT NULL,
+universe(> name VARCHAR(30) NOT NULL,
 universe(> constellation VARCHAR(30) NOT NULL,
 universe(> distance NUMERIC,
 universe(> size int
@@ -22,7 +22,7 @@ universe=> CREATE TABLE star (
 universe(> star_id INT PRIMARY KEY,
 universe(> name VARCHAR(30) NOT NULL,
 universe(> age INT,
-universe(> detectedCompanions INT,
+universe(> detected_companions INT,
 universe(> galaxy_id INT,
 universe(> CONSTRAINT fk_galaxy
 universe(> FOREIGN KEY(galaxy_id)
@@ -33,7 +33,8 @@ universe=> CREATE TABLE planet (
 universe(> planet_id INT PRIMARY KEY UNIQUE,
 universe(> name VARCHAR(30) NOT NULL,
 universe(> star_id INT,
-universe(> hasMoons BOOLEAN,
+universe(> has_moons BOOLEAN,
+universe(> num_moons SMALLINT,
 universe(> CONSTRAINT fk_star
 universe(> FOREIGN KEY(star_id)
 universe(> REFERENCES star(star_id)
