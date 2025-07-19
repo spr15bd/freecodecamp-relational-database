@@ -56,4 +56,7 @@ universe(> name VARCHAR(30) NOT NULL,
 universe(> is_spherical BOOLEAN
 universe(> );
 CREATE TABLE
+universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Large Magellanic Cloud','Dorado/Mensa',163000,9.86);
+ERROR:  null value in column "galaxy_id" violates not-null constraint
+DETAIL:  Failing row contains (null, Large Magellanic Cloud, Dorado/Mensa, 163000, 10).
 universe=> 
