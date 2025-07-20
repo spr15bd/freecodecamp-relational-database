@@ -11,11 +11,11 @@ postgres=> \c universe;
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
 You are now connected to database "universe" as user "freecodecamp".
 universe=> CREATE TABLE galaxy (
-universe(> galaxy_id INT PRIMARY KEY UNIQUE,
+universe(> galaxy_id SERIAL PRIMARY KEY,
 universe(> name VARCHAR(30) NOT NULL,
 universe(> constellation VARCHAR(30) NOT NULL,
 universe(> distance NUMERIC,
-universe(> size int
+universe(> size NUMERIC(6,2)
 universe(> );
 CREATE TABLE
 universe=> CREATE TABLE star (
