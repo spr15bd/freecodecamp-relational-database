@@ -67,6 +67,7 @@ universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Antenn
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Backward Galaxy','Centaurus',200,1.7);
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Barnard's Galaxy','Sagittarius',1.63,2.82);
 universe=> INSERT INTO galaxy (name,constellation,size) VALUES ('Bear Paw Galaxy','Lynx',1.7);
+universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Black Eye Galaxy',Coma Berenices',17.3,16.51);
 ERROR:  null value in column "galaxy_id" violates not-null constraint
 DETAIL:  Failing row contains (null, Large Magellanic Cloud, Dorado/Mensa, 163000, 10).
 universe=> 
