@@ -76,6 +76,7 @@ universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Mars',
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Saturn',1,1,274);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Jupiter',1,1,95);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Neptune',1,1,16);
+universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Uranus',1,1,27);
 INSERT INTO star (name, age, detected_companions, galaxy_id) VALUES ('Sun',4.6,8,13);
 ERROR:  null value in column "galaxy_id" violates not-null constraint
 DETAIL:  Failing row contains (null, Large Magellanic Cloud, Dorado/Mensa, 163000, 10).
