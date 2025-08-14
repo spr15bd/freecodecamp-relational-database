@@ -71,6 +71,7 @@ universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Black 
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Milky Way','Sagittarius',8,26.8);
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Blinking Galaxy','Serpens',82.9,110000);
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Bode\'s Galaxy','Ursa Major',11.8,29.44);
+universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Butterfly Galaxies','Virgo',62,4.6);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Earth',1,1,1);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Mercury',1,0,0);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Venus',1,0,0);
