@@ -75,6 +75,7 @@ universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Butter
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Cartwheel Galaxy','Sculptor',500,57.69);
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Cigar Galaxy','Ursa Major',11.9,12.52);
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Circinus Galaxy','Circinus',13.05,14.85);
+universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Cocoon Galaxy','Canes Venatici',25.1,40200);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Earth',1,1,1);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Mercury',1,0,0);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Venus',1,0,0);
