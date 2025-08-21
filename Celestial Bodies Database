@@ -79,6 +79,7 @@ universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Cocoon
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Coma Pinwheel Galaxy','Coma Berenices',45.2,98130);
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Comet Galaxy','Sculptor',3.2,600000);
 universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Condor Galaxy','Pavo',212,160);
+universe=> INSERT INTO galaxy (name,constellation,distance,size) VALUES ('Cosmos Redshift 7','Sextans',12.9,0.8);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Earth',1,1,1);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Mercury',1,0,0);
 universe=> INSERT INTO planet (name,star_id,has_moons,num_moons) VALUES ('Venus',1,0,0);
